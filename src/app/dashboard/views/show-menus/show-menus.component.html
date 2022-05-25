@@ -1,0 +1,39 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Menus</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Home</a></li>
+          <li class="breadcrumb-item active">Menus</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 scrollbar" style="max-height: 550px; overflow:auto">
+        <div class="col" *ngFor="let menu of menus">
+          <div class="card card-product-grid pb-2">
+            <a href="#" class="img-wrap" style="margin: 0 auto;"> <img src="{{menu.image}}" alt="Product" width="110px"> </a>
+            <div class="info-wrap">
+              <h2 href="#" class="text-center">{{menu.libelle}} </h2>
+              <div class="price mb-2">
+                <ul class="list-group p-2 scrollbar" style="height: 120px;overflow:auto">
+                  <li class="list-group-item" *ngFor="let product of menu.products">{{product}}</li>
+                </ul>
+              </div> <!-- price.// -->
+        
+              <div class="w-100 d-flex justify-content-around mt-3">
+                <a href="#" (click)="openDialog()" data-bs-toggle="dropdown" class="btn btn-sm btn-dark"> 
+                  <i class="bi bi-pen-fill"></i>  Modifier  
+                </a>
+                <a href="#" (click)="deleteMenu(menu)" data-bs-toggle="dropdown" class="btn btn-sm btn-outline-danger"> 
+                    <i class="bi bi-archive-fill"></i>  Archiver  
+                </a>
+              </div>
+            </div>
+          </div> <!-- card-product  end// -->
+        </div> <!-- col.// -->
+      </div>
+    </section>
+  </main>

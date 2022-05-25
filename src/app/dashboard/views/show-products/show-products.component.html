@@ -1,0 +1,41 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Produits</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/dashboard']" href="#">Home</a></li>
+          <li class="breadcrumb-item active">Produits</li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="section">
+      <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 scrollbar" style="max-height: 550px; overflow:auto">
+        <div class="col" *ngFor="let product of products">
+          <div class="card card-product-grid pb-2">
+            <div class="info-wrap">
+              <h2 href="#" class="text-center">{{product.libelle}} </h2>
+              <div class="price mb-2">
+                <ul class="list-group p-2 scrollbar" style="height: 120px;overflow:auto">
+                  <li class="list-group-item text-center" *ngFor="let comp of product.components">{{comp}}</li>
+                </ul>
+              </div>
+        
+              <div class="w-100 mt-3">
+                <div class="container d-flex justify-content-around">
+                  <a href="#" (click)="openDialog(product)" data-bs-toggle="dropdown" class="btn btn-sm btn-dark"> 
+                    <i class="bi bi-pen-fill"></i>  Modifier  
+                  </a>
+                  <a href="#" (click)="deleteProduct(product)" data-bs-toggle="dropdown" class="btn btn-sm btn-outline-danger"> 
+                      <i class="bi bi-archive-fill"></i>  Archiver  
+                  </a>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </section>
+
+  </main>

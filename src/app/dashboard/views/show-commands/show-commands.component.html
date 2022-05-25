@@ -1,0 +1,60 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Commandes</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Home</a></li>
+          <li class="breadcrumb-item active">Commandes</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="table-responsive">
+				<table class="table table-hover">
+					<thead class="w-100">
+						<tr>
+							<th>Montant</th>
+							<th scope="col">Client</th>
+							<th scope="col">Menu</th>
+							<th scope="col">Quantite</th>
+              				<th scope="col">Etat</th>
+							<th scope="col">Payement</th>
+							<th scope="col">Date</th>
+							<th scope="col" class="text-end"> Actions </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let command of commands">
+							<td>{{command.amount}} F CFA</td>
+							<td><b>{{command.client}}</b></td>
+							<td>{{command.menus}}</td>
+							<td>{{command.quantity}}</td>
+							<td><span class="badge rounded-pill alert-warning" *ngIf="command.ready==false; else elseReady" >Cuisson</span></td>
+              
+							<ng-template #elseReady>
+                <td><span class="badge rounded-pill alert-success">Pret</span></td>
+              </ng-template>
+              <td><span class="badge rounded-pill alert-danger" *ngIf="command.payed==false; else elsePayed" >Impaye</span></td>
+              <ng-template #elsePayed>
+                <td><span class="badge rounded-pill alert-success">Paye</span></td>  
+              </ng-template>
+              
+              <td>{{command.commandedAt.seconds*1000 | date}}</td>
+							<td class="text-end d-flex">
+								<div class="dropdown">
+									<a href="#" data-bs-toggle="dropdown" class="btn btn-dark"> <i class="bi bi-three-dots"></i> </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" (click)="markAsPayedCom(command)">Marquer payee</a>
+										<a class="dropdown-item" (click)="markAsReadyCom(command)">Marquer pret</a>
+										<a class="dropdown-item text-danger" (click)="cancelCom(command)">Annuler</a>
+									</div>
+								</div> <!-- dropdown //end -->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+    </section>
+  </main>

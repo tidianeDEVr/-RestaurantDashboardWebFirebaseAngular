@@ -1,0 +1,58 @@
+<main style="background-color: #e0e0e0" class="vh-100">
+    <div class="container">
+      <section class="section register min-vh-90 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+              <div class="d-flex justify-content-center py-4">
+                <a href="" class="logo d-flex align-items-center w-auto">
+                  <h1>BRASIL BURGER</h1>
+                </a>
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Connectez-vous a votre compte</h5>
+                    <p class="text-center small">Entrez votre login et votre mot de passe</p>
+                  </div>
+                  <form class="row g-3 needs-validation" [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <div class="col-12">
+                      <!-- <label for="yourUsername" class="form-label">Adresse email</label> -->
+                      <div class="input-group has-validation">
+                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Entrez votre adresse email!</div> -->
+                        <mat-form-field class="w-100">
+                          <input matInput placeholder="Adresse email" formControlName="email"/>
+                          <mat-error *ngIf="email?.errors?.['required']">L'adresse email est recquis</mat-error>
+                          <mat-error *ngIf="email?.errors?.['email']">L'adresse email n'est pas valide</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <!-- <label for="yourPassword" class="form-label">Mot de passe</label>
+                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Entrez votre mot de passe!</div> -->
+                      <mat-form-field class="w-100">
+                        <input matInput placeholder="Mot de passe" formControlName="password" type="password"/>
+                        <mat-error *ngIf="password?.errors?.['required']">Le mot de passe est recquis</mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Se rappeler de moi?</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button mat-button type="submit">Soumettre</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>

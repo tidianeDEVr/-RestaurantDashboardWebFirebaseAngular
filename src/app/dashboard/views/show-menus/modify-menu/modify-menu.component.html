@@ -1,0 +1,33 @@
+<div class="dialogCont">
+    <h2 mat-dialog-title>Modifier un menu</h2>
+    <mat-dialog-content>
+        <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Libelle</label>
+              <input type="libelle" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="inputState" class="form-label">Categorie</label>
+                <!-- <select id="inputState" class="form-select" [(ngModel)]="menu.category" name="category">
+                  <option *ngFor="let category of categories" value="{{category.id}}">{{category.libelle}}</option>
+                </select> -->
+                <select id="inputState" class="form-select" name="category">
+                    <option>Burger</option>
+                    <option>Complet</option>
+                  </select>
+              </div>
+              <div class="mb-5">
+                <label for="inputState" class="form-label">Produits ( maintenir ctrl pour selectionnez plusieurs)</label>
+                <!-- <select id="sltPrdts" class="form-select" multiple [(ngModel)]="menu.products" name="products">
+                  <option *ngFor="let product of products">{{product.libelle}}</option>
+                </select> -->
+                <select id="sltPrdts" class="form-select" multiple name="products">
+                    <option>Produit 1</option>
+                    <option>Produit 2</option>
+                    <option>Produit 3</option>
+                </select>
+              </div>
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+        </form>
+    </mat-dialog-content>
+</div>
